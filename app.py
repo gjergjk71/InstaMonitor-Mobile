@@ -3,7 +3,13 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
+from InstagramAPI import InstagramAPI
+from functools import partial
 
+def login(username,password):
+	api = InstagramAPI(username,password)
+	api.login()
+	return api
 
 class LoginScreen(GridLayout):
 	def __init__(self,**kwargs):
@@ -31,7 +37,8 @@ class LoginScreen(GridLayout):
 		self.add_widget(Label())
 
 		self.add_widget(Label())
-		self.add_widget(Button(text="Login"))
+		self.login = Button(text="Login")
+		self.add_widget(self.login)
 		self.add_widget(Label())
 
 class SimpleKivy(App):
