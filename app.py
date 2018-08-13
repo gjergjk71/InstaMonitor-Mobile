@@ -38,6 +38,7 @@ class LoginScreen(GridLayout):
 
 		self.add_widget(Label())
 		self.login = Button(text="Login")
+		self.login.bind(on_press=lambda _: login(self.username.text,self.password.text))
 		self.add_widget(self.login)
 		self.add_widget(Label())
 
